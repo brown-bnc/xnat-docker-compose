@@ -19,7 +19,6 @@ services:
         TOMCAT_XNAT_FOLDER: ROOT
         XNAT_ROOT: /data/xnat
         XNAT_HOME: /data/xnat/home
-    image: "brownbnc/xnat-web"
     ports:
       - "8081:8080"
       - "8000:8000"
@@ -37,7 +36,6 @@ services:
 
   xnat-db:
     build: ./postgres
-    image: "brownbnc/xnat-web"
     expose:
       - "5432"
     volumes:
