@@ -19,6 +19,7 @@ services:
         TOMCAT_XNAT_FOLDER: ROOT
         XNAT_ROOT: /data/xnat
         XNAT_HOME: /data/xnat/home
+        HOST_URL: http://pbnccit.services.brown.edu
     ports:
       - "8081:8080"
       - "8000:8000"
