@@ -20,7 +20,7 @@ if [ ! -f $XNAT_HOME/config/prefs-init.ini ]; then
 [siteConfig]
 
 siteId=XNAT
-siteUrl=http://localhost
+siteUrl=http://pbnccit.services.brown.edu
 adminEmail=fake@fake.fake
 
 archivePath=/data/xnat/archive
