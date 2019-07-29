@@ -23,6 +23,7 @@ services:
     ports:
       - "8081:8080"
       - "8000:8000"
+      - "8104:8104"
     volumes:
       - /data/xnat/home/logs:/data/xnat/home/logs
       - /data/xnat/home/plugins:/data/xnat/home/plugins

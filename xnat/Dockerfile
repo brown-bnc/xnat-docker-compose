@@ -47,7 +47,7 @@ RUN apk add --no-cache \
     rm -f ../xnat-web-${XNAT_VER}.war && \
     apk del wget
 
-EXPOSE 8080
+EXPOSE 8080 8104
 ENV XNAT_HOME=${XNAT_HOME} XNAT_DATASOURCE_USERNAME=${XNAT_DATASOURCE_USERNAME}
 
 CMD ["wait-for-postgres.sh", "/usr/local/tomcat/bin/catalina.sh", "run"]
