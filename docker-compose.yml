@@ -25,7 +25,11 @@ services:
       - "8000:8000"
       - "8104:8104"
     volumes:
-      - /data/xnat:/data/xnat
+      - /data/xnat/home/logs:/data/xnat/home/logs
+      - /data/xnat/home/plugins:/data/xnat/home/plugins
+      - /data/xnat/home/config/auth:/data/xnat/home/config/auth
+      - /data/xnat/archive:/data/xnat/archive
+      - /data/xnat/build:/data/xnat/build
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - xnat-db
