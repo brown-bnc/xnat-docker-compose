@@ -1,8 +1,6 @@
 version: '2'
 services:
   xnat-web:
-    env_file:
-      - xnat.env
     build:
       context: ./xnat
       args:
