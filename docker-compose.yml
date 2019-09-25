@@ -16,7 +16,7 @@ services:
         XNAT_DATASOURCE_DRIVER: 'org.postgresql.Driver'
         XNAT_DATASOURCE_URL: 'jdbc:postgresql://qmripgdbcit.services.brown.edu:5432/xnat'
         XNAT_DATASOURCE_USERNAME: 'xnat'
-        XNAT_DATASOURCE_PASSWORD: ${XNAT_POSTGRES_PASSWORD}
+        XNAT_DATASOURCE_PASSWORD: ${XNAT_DATASOURCE_PASSWORD}
         XNAT_HIBERNATE_DIALECT: 'org.hibernate.dialect.PostgreSQL9Dialect'
         TOMCAT_XNAT_FOLDER: ROOT
         XNAT_ROOT: /data/xnat
