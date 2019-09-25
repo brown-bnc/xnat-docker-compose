@@ -5,7 +5,7 @@ set -e
 
 cmd="$@"
 
-until psql -U "$XNAT_DATASOURCE_USERNAME" -h xnat-db -c '\q'; do
+until psql -U "$XNAT_DATASOURCE_USERNAME" -h "$XNAT_DATASOURCE_HOST" -c '\q'; do
   >&2 echo "Postgres is unavailable - sleeping"
   sleep 5
 done

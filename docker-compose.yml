@@ -12,7 +12,8 @@ services:
         SMTP_USERNAME:
         SMTP_PASSWORD:
         XNAT_DATASOURCE_DRIVER: 'org.postgresql.Driver'
-        XNAT_DATASOURCE_URL: 'jdbc:postgresql://qmripgdbcit.services.brown.edu:5432/xnat'
+        XNAT_DATASOURCE_HOST: ${XNAT_DATASOURCE_HOST}
+        XNAT_DATASOURCE_URL: 'jdbc:postgresql://${XNAT_DATASOURCE_HOST}:5432/xnat'
         XNAT_DATASOURCE_USERNAME: 'xnat'
         XNAT_DATASOURCE_PASSWORD: ${XNAT_DATASOURCE_PASSWORD}
         XNAT_HIBERNATE_DIALECT: 'org.hibernate.dialect.PostgreSQL9Dialect'
