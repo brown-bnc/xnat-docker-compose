@@ -1,6 +1,7 @@
 version: '2'
 services:
   xnat-web:
+    env_file:./xnat/.env
     build:
       context: ./xnat
       args:
@@ -12,9 +13,9 @@ services:
         SMTP_USERNAME:
         SMTP_PASSWORD:
         XNAT_DATASOURCE_DRIVER: 'org.postgresql.Driver'
-        XNAT_DATASOURCE_URL: 'jdbc:postgresql://xnat-db/xnat'
+        XNAT_DATASOURCE_URL: 'jdbc:postgresql://qmripgdbcit.services.brown.edu:5432/xnat'
         XNAT_DATASOURCE_USERNAME: 'xnat'
-        XNAT_DATASOURCE_PASSWORD: 'xnat'
+        XNAT_DATASOURCE_PASSWORD: ${XNAT_POSTGRES_PASSWORD}
         XNAT_HIBERNATE_DIALECT: 'org.hibernate.dialect.PostgreSQL9Dialect'
         TOMCAT_XNAT_FOLDER: ROOT
         XNAT_ROOT: /data/xnat
@@ -31,18 +32,16 @@ services:
       - /data/xnat/archive:/data/xnat/archive
       - /data/xnat/build:/data/xnat/build
       - /var/run/docker.sock:/var/run/docker.sock
-    depends_on:
-      - xnat-db
     environment:
       - CATALINA_OPTS=-Xms128m -Xmx1024m -Dxnat.home=/data/xnat/home -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
       - XNAT_HOME=/data/xnat/home
 
-  xnat-db:
-    build: ./postgres
-    expose:
-      - "5432"
-    volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+  # xnat-db:
+  #   build: ./postgres
+  #   expose:
+  #     - "5432"
+  #   volumes:
+  #     - ./postgres-data:/var/lib/postgresql/data
 
   # xnat-nginx:
   #   build: ./nginx
