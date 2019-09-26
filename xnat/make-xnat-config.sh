@@ -52,3 +52,4 @@ emailPrefix=XNAT
 EOF
 fi
 
+exec "$@"
