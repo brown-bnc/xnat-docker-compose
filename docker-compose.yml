@@ -12,14 +12,14 @@ services:
       - "8000:8000"
       - "8104:8104"
     volumes:
-      - /data/xnat/home/logs:${XNAT_HOME}/logs
-      - /data/xnat/home/plugins:${XNAT_HOME}/plugins
-      - /data/xnat/home/config/auth:${XNAT_HOME}/config/auth
+      - /data/xnat/home/logs:/data/xnat/home/logs
+      - /data/xnat/home/plugins:/data/xnat/home/plugins
+      - /data/xnat/home/config/auth:/data/xnat/home/config/auth
       - /data/xnat/archive:${XNAT_ROOT}/archive
       - /data/xnat/build:${XNAT_ROOT}/build
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - CATALINA_OPTS=-Xms128m -Xmx1024m -Dxnat.home=${XNAT_HOME} -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+      - CATALINA_OPTS=-Xms128m -Xmx1024m -Dxnat.home=/data/xnat/home -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
       - SMTP_ENABLED=false
       - SMTP_HOSTNAME=fake.fake
       # - SMTP_PORT:
