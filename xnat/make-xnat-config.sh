@@ -52,4 +52,5 @@ emailPrefix=XNAT
 EOF
 fi
 
-exec "$@"
+exec "/usr/local/tomcat/bin/catalina.sh", "run"
+# exec "$@"

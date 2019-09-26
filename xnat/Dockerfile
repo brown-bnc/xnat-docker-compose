@@ -38,4 +38,4 @@ COPY make-xnat-config.sh /usr/local/bin/make-xnat-config.sh
 
 ENTRYPOINT [ /usr/local/bin/make-xnat-config.sh ]
 
-CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
+# CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
