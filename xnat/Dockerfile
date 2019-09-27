@@ -2,8 +2,7 @@ FROM tomcat:7-jre8-alpine
 
 ARG XNAT_VER
 ARG XNAT_ROOT
-ENV XNAT_DATASOURCE_DRIVER=org.postgresql.Driver
-ENV XNAT_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQL9Dialect
+ARG XNAT_HOME=${XNAT_ROOT}/home
 ARG TOMCAT_XNAT_FOLDER=ROOT
 
 RUN apk add --no-cache \
@@ -34,8 +33,4 @@ RUN apk add --no-cache \
 
 EXPOSE 8080 8104
 
-COPY make-xnat-config.sh /usr/local/bin/make-xnat-config.sh
-
-ENTRYPOINT [ /usr/local/bin/make-xnat-config.sh ]
-
-# CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
+CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
