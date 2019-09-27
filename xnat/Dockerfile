@@ -32,5 +32,6 @@ RUN apk add --no-cache \
 
 
 EXPOSE 8080 8104
+ENV XNAT_HOME=${XNAT_HOME}
 
 CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
