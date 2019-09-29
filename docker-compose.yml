@@ -7,6 +7,7 @@ services:
         XNAT_VER: '1.7.5.1'
         XNAT_ROOT: /data/xnat
     image: brownbnc/xnat:1.7.5.1
+    container_name: xnat-dev
     ports:
       - "8081:8080"
       - "8000:8000"
