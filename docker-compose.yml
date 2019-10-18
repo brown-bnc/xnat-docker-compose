@@ -1,6 +1,6 @@
 version: '3'
 services:
-  xnat-dev:
+   xnat:
     build:
       context: ./xnat
       args:
@@ -8,7 +8,7 @@ services:
         XNAT_ROOT: /data/xnat
         TOMCAT_XNAT_FOLDER: ${TOMCAT_XNAT_FOLDER}
     image: brownbnc/xnat:1.7.5.1
-    container_name: xnat-dev
+    container_name: ${CONTAINER_NAME}
     ports:
       - "8081:8080"
       - "8000:8000"
