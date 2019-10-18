@@ -8,9 +8,32 @@ services:
         XNAT_ROOT: /data/xnat
         TOMCAT_XNAT_FOLDER: ${TOMCAT_XNAT_FOLDER}
     image: brownbnc/xnat:1.7.5.1
-    container_name: ${CONTAINER_NAME}
+    container_name: xnat
     ports:
-      - "${XNAT_PORT}:8080"
+      - "8089:8080"
+      - "8000:8000"
+      - "8104:8104"
+    volumes:
+      - ${HOST_XNAT_ROOT}/home/logs:${XNAT_ROOT}/home/logs
+      - ${HOST_XNAT_ROOT}/home/plugins:${XNAT_ROOT}/home/plugins
+      - ${HOST_XNAT_ROOT}/home/config:${XNAT_ROOT}/home/config/
+      - ${HOST_XNAT_ROOT}/archive:${XNAT_ROOT}/archive
+      - ${HOST_XNAT_ROOT}/build:${XNAT_ROOT}/build
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${HOST_XNAT_ROOT}/tomcat/logs:/usr/local/tomcat/logs
+    environment:
+      - CATALINA_OPTS=-Xms128m -Xmx1024m -Dxnat.home=${XNAT_ROOT}/home -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+  xnat-dev:
+    build:
+      context: ./xnat
+      args:
+        XNAT_VER: '1.7.5.1'
+        XNAT_ROOT: /data/xnat
+        TOMCAT_XNAT_FOLDER: ${TOMCAT_XNAT_FOLDER}
+    image: brownbnc/xnat:1.7.5.1
+    container_name: xnat-dev
+    ports:
+      - "8081:8080"
       - "8000:8000"
       - "8104:8104"
     volumes:
