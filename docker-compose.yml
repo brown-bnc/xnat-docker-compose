@@ -12,13 +12,18 @@ services:
     ports:
       - "8089:8080"
       - "8009:8000"
-      - "8109:8104"
+      - "8104:8104"
     volumes:
       - ${HOST_XNAT_ROOT}/home/logs:${XNAT_ROOT}/home/logs
       - ${HOST_XNAT_ROOT}/home/plugins:${XNAT_ROOT}/home/plugins
-      - ${HOST_XNAT_ROOT}/home/config:${XNAT_ROOT}/home/config/
-      - ${HOST_XNAT_ROOT}/archive:${XNAT_ROOT}/archive
+      - ${HOST_XNAT_ROOT}/home/config:${XNAT_ROOT}/home/config
+      - ${HOST_XNAT_ROOT}/home/work:${XNAT_ROOT}/home/work
+      - /mnt/brownresearch/xnat/archive:${XNAT_ROOT}/archive
+      - ${HOST_XNAT_ROOT}/prearchived:${XNAT_ROOT}/prearchived
+      - ${HOST_XNAT_ROOT}/pipeline:${XNAT_ROOT}/pipeline
       - ${HOST_XNAT_ROOT}/build:${XNAT_ROOT}/build
+      - ${HOST_XNAT_ROOT}/ftp:${XNAT_ROOT}/ftp
+      - ${HOST_XNAT_ROOT}/cache:${XNAT_ROOT}/cache
       - /var/run/docker.sock:/var/run/docker.sock
       - ${HOST_XNAT_ROOT}/tomcat/logs:/usr/local/tomcat/logs
     environment:
@@ -35,13 +40,18 @@ services:
     ports:
       - "8081:8080"
       - "8000:8000"
-      - "8104:8104"
+      - "8109:8104"
     volumes:
       - ${HOST_XNAT_ROOT}/home/logs:${XNAT_ROOT}/home/logs
       - ${HOST_XNAT_ROOT}/home/plugins:${XNAT_ROOT}/home/plugins
-      - ${HOST_XNAT_ROOT}/home/config:${XNAT_ROOT}/home/config/
+      - ${HOST_XNAT_ROOT}/home/config:${XNAT_ROOT}/home/config
+      - ${HOST_XNAT_ROOT}/home/work:${XNAT_ROOT}/home/work
       - ${HOST_XNAT_ROOT}/archive:${XNAT_ROOT}/archive
+      - ${HOST_XNAT_ROOT}/prearchived:${XNAT_ROOT}/prearchived
+      - ${HOST_XNAT_ROOT}/pipeline:${XNAT_ROOT}/pipeline
       - ${HOST_XNAT_ROOT}/build:${XNAT_ROOT}/build
+      - ${HOST_XNAT_ROOT}/ftp:${XNAT_ROOT}/ftp
+      - ${HOST_XNAT_ROOT}/cache:${XNAT_ROOT}/cache
       - /var/run/docker.sock:/var/run/docker.sock
       - ${HOST_XNAT_ROOT}/tomcat/logs:/usr/local/tomcat/logs
     environment:
