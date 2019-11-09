@@ -56,4 +56,38 @@ services:
       - ${HOST_XNAT_ROOT}/tomcat/logs:/usr/local/tomcat/logs
     environment:
       - CATALINA_OPTS=-Xms128m -Xmx1024m -Dxnat.home=${XNAT_ROOT}/home -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
-      
+  xnat-local:
+    build:
+      context: ./xnat
+      args:
+        XNAT_VER: '1.7.5.1'
+        XNAT_ROOT: /data/xnat
+        TOMCAT_XNAT_FOLDER: ${TOMCAT_XNAT_FOLDER}
+    image: brownbnc/xnat:1.7.5.1
+    container_name: xnat-local
+    ports:
+      - "8082:8080"
+      - "8002:8000"
+      - "8102:8104"
+    volumes:
+      - ${HOST_XNAT_ROOT}/home/logs:${XNAT_ROOT}/home/logs
+      - ${HOST_XNAT_ROOT}/home/plugins:${XNAT_ROOT}/home/plugins
+      - ${HOST_XNAT_ROOT}/home/config:${XNAT_ROOT}/home/config
+      - ${HOST_XNAT_ROOT}/home/work:${XNAT_ROOT}/home/work
+      - ${HOST_XNAT_ROOT}/archive:${XNAT_ROOT}/archive
+      - ${HOST_XNAT_ROOT}/prearchived:${XNAT_ROOT}/prearchived
+      - ${HOST_XNAT_ROOT}/pipeline:${XNAT_ROOT}/pipeline
+      - ${HOST_XNAT_ROOT}/build:${XNAT_ROOT}/build
+      - ${HOST_XNAT_ROOT}/ftp:${XNAT_ROOT}/ftp
+      - ${HOST_XNAT_ROOT}/cache:${XNAT_ROOT}/cache
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${HOST_XNAT_ROOT}/tomcat/logs:/usr/local/tomcat/logs
+    environment:
+      - CATALINA_OPTS=-Xms128m -Xmx1024m -Dxnat.home=${XNAT_ROOT}/home -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+  xnat-db-local:
+    build: ./postgres
+    container_name: xnat-db-local
+    expose:
+      - "5432"
+    volumes:
+      - /data/postgres-data:/var/lib/postgresql/data
