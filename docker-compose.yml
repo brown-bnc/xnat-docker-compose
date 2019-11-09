@@ -84,6 +84,8 @@ services:
       - ${HOST_XNAT_ROOT}/tomcat/logs:/usr/local/tomcat/logs
     environment:
       - CATALINA_OPTS=-Xms128m -Xmx1024m -Dxnat.home=${XNAT_ROOT}/home -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
+    depends_on:
+      - xnat-db-local
   xnat-db-local:
     build: ./postgres
     container_name: xnat-db-local
