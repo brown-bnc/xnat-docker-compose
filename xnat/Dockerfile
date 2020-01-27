@@ -22,6 +22,7 @@ RUN apk add --no-cache \
         ${XNAT_ROOT}/ftp \
         ${XNAT_ROOT}/pipeline \
         ${XNAT_ROOT}/prearchive \
+        ${XNAT_ROOT}/dicom-export \
     && \
     cd $CATALINA_HOME/webapps/ && \
     wget https://api.bitbucket.org/2.0/repositories/xnatdev/xnat-web/downloads/xnat-web-${XNAT_VER}.war && \
