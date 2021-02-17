@@ -4,10 +4,10 @@ services:
     build:
       context: ./xnat
       args:
-        XNAT_VER: '1.7.6'
+        XNAT_VER: '1.8.0-RC-SNAPSHOT'
         XNAT_ROOT: /data/xnat
         TOMCAT_XNAT_FOLDER: ${TOMCAT_XNAT_FOLDER}
-    image: brownbnc/xnat:1.7.6
+    image: brownbnc/xnat:1.8.0-RC-SNAPSHOT
     container_name: xnat
     ports:
       - "8089:8080"
@@ -19,7 +19,7 @@ services:
       - ${HOST_XNAT_ROOT}/home/config:${XNAT_ROOT}/home/config
       - ${HOST_XNAT_ROOT}/home/work:${XNAT_ROOT}/home/work
       - /mnt/brownresearch/xnat/archive:${XNAT_ROOT}/archive
-      - /mnt/brownresearch/xnat/inbox:${XNAT_ROOT}/inbox
+      - ${HOST_XNAT_ROOT}/inbox:${XNAT_ROOT}/inbox
       - ${HOST_XNAT_ROOT}/prearchived:${XNAT_ROOT}/prearchived
       - ${HOST_XNAT_ROOT}/pipeline:${XNAT_ROOT}/pipeline
       - ${HOST_XNAT_ROOT}/build:${XNAT_ROOT}/build
@@ -33,10 +33,10 @@ services:
     build:
       context: ./xnat
       args:
-        XNAT_VER: '1.7.6'
+        XNAT_VER: '1.8.0-RC-SNAPSHOT'
         XNAT_ROOT: /data/xnat
         TOMCAT_XNAT_FOLDER: ${TOMCAT_XNAT_FOLDER}
-    image: brownbnc/xnat:1.7.6
+    image: brownbnc/xnat-dev:1.8.0-RC-SNAPSHOT
     container_name: xnat-dev
     ports:
       - "8081:8080"
